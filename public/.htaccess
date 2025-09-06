@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+    # Keep Laravel happy and stop MultiViews weirdness
+    Options -MultiViews -Indexes
+    RewriteEngine On
+
+    # 0) If the ORIGINAL request targeted /public or /public/..., bounce to the clean URL at the site root
+    #    (We check THE_REQUEST so internal rewrites don't trip this.)
+    RewriteCond %{THE_REQUEST} \s/+public(/[^\s]*)?\s [NC]
+    RewriteRule ^(.*)$ /$1 [R=301,L]
+
+    # 1) Preserve Authorization header for Laravel (Sanctum/Passport, etc.)
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # 2) Preserve X-XSRF-Token if you use it
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # 3) Strip trailing slashes if not a real directory
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # 4) Laravel front controller
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

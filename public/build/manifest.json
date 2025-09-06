@@ -1,0 +1,24 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-CKUTribm.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/css/editor/editor-support.css": {
+    "file": "assets/editor-support-rJgcRwuI.css",
+    "src": "resources/css/editor/editor-support.css",
+    "isEntry": true,
+    "names": [
+      "editor-support.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DEsTI74C.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}

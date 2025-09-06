@@ -1,0 +1,78 @@
+/* ===== Content Body — shared for Admin + Public ===== */
+
+/* Base text */
+.content-body p {
+  line-height: 1.7;
+  margin: 0.75rem 0;
+}
+
+/* Headings */
+.content-body h2 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+.content-body h3 { font-size: 1.25rem; font-weight: 700; margin: 1.25rem 0 0.5rem; }
+.content-body h4 { font-size: 1.125rem; font-weight: 700; margin: 1rem 0 0.5rem; }
+.content-body h5 { font-size: 1rem; font-weight: 700; margin: 0.75rem 0 0.5rem; }
+
+/* Links — same color everywhere */
+.content-body a {
+  color: #3b82f6 !important;         /* Tailwind blue-500 */
+  text-decoration: none;
+}
+.content-body a:hover,
+.content-body a:focus { text-decoration: underline; }
+.content-body a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Images — centered + responsive */
+.content-body img {
+  display: block !important;         /* beat any admin reset */
+  margin: 1rem auto !important;      /* horizontal center */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Lists — center the block, keep items left-aligned */
+.content-body ul,
+.content-body ol {
+  display: inline-block;
+  text-align: left !important;       /* override parent centering */
+  margin: 0.75rem auto;
+  padding-left: 1.5rem;              /* indent */
+}
+
+/* Bulleted lists */
+.content-body ul {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+.content-body ul li::marker {
+  color: #3b82f6;                    /* blue bullet */
+  font-size: 1.1em;
+}
+
+/* Numbered lists */
+.content-body ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+.content-body ol li::marker {
+  color: #60a5fa;                    /* lighter blue number */
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+/* List items and editor’s <li><p>…</p></li> markup */
+.content-body li { margin: 0.25rem 0; }
+.content-body li,
+.content-body li p { text-align: left !important; }
+.content-body li p { margin: 0; display: inline; }
+
+/* Blockquote (optional) */
+.content-body blockquote {
+  display: inline-block;             /* centers block while text stays left */
+  text-align: left;
+  border-left: 3px solid rgba(59,130,246,.5);
+  padding-left: 0.75rem;
+  margin: 1rem auto;
+}

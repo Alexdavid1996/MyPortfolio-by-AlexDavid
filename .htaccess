@@ -1,0 +1,26 @@
+Options +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+# If not installed yet, send / to the installer
+RewriteCond %{DOCUMENT_ROOT}/storage/installer.lock !-f
+RewriteRule ^$ installer.php [L]
+
+# Allow installer and its assets
+RewriteRule ^installer\.php$ - [L,NC]
+RewriteCond %{REQUEST_URI} ^/installer/ [NC]
+RewriteRule ^ - [L]
+
+# If already under /public do nothing
+RewriteCond %{REQUEST_URI} ^/public/ [NC]
+RewriteRule ^ - [L]
+
+# Everything else to /public
+RewriteRule ^(.*)$ public/$1 [L,QSA]
+</IfModule>
+
+# protect sensitive files anywhere
+<FilesMatch "^(\.env|composer\.(json|lock)|artisan|server\.php|phpunit\.xml|vite\.config\.js)$">
+  Require all denied
+</FilesMatch>

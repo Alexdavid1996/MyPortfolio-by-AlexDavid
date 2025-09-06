@@ -1,0 +1,531 @@
+/* =========================================
+   Modern Installer Theme - Base
+   ========================================= */
+*,
+*::before,
+*::after { 
+  box-sizing: border-box; 
+}
+
+:root {
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --bg-main: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+  --bg-card: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border: #d1d5db;
+  --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --accent: #60a5fa;
+  --bg-light: #eff6ff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 2.25rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+h2 {
+  margin: 24px 0 16px;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 8px;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+}
+
+p {
+  margin: 0 0 16px;
+  color: var(--text-secondary);
+}
+
+.container {
+  width: min(700px, 95%);
+  margin: 20px auto;
+  padding: 32px;
+  background: var(--bg-card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.section { 
+  padding: 16px 0; 
+}
+
+.installer-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.installer-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-top: 8px;
+}
+
+/* =========================================
+   Forms & Inputs
+   ========================================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.input {
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background: #ffffff;
+}
+
+.input:valid {
+  border-color: var(--success);
+}
+
+.input[required]:invalid:not(:placeholder-shown) {
+  border-color: var(--error);
+}
+
+.input-description {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* =========================================
+   Buttons
+   ========================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  min-height: 48px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--text-primary);
+  border: 2px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+  color: #ffffff;
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, var(--warning) 0%, #d97706 100%);
+  color: #ffffff;
+}
+
+/* =========================================
+   Notices & Alerts
+   ========================================= */
+.notice {
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border-left: 4px solid;
+  background: #fef3c7;
+  border-color: var(--warning);
+  color: #92400e;
+}
+
+.notice.error {
+  background: #fef2f2;
+  border-color: var(--error);
+  color: #991b1b;
+}
+
+.notice.success {
+  background: #ecfdf5;
+  border-color: var(--success);
+  color: #065f46;
+}
+
+.notice ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.notice li {
+  margin-bottom: 4px;
+}
+
+/* =========================================
+   Requirements Check
+   ========================================= */
+.requirements-section {
+  margin-bottom: 32px;
+}
+
+.requirements-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.requirement-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.requirement-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.requirement-item.passed {
+  background: #ecfdf5;
+  border-color: var(--success);
+  color: #065f46;
+}
+
+.requirement-item.failed {
+  background: #fef2f2;
+  border-color: var(--error);
+  color: #991b1b;
+}
+
+.requirement-status {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.requirement-status.passed::before {
+  content: "✓ ";
+  color: var(--success);
+}
+
+.requirement-status.failed::before {
+  content: "✗ ";
+  color: var(--error);
+}
+
+/* =========================================
+   Progress Steps
+   ========================================= */
+.steps {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: #f3f4f6;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.step.active {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.step.completed {
+  background: linear-gradient(135deg, var(--success) 0%, #34d399 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.footer {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 20px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 0 0 20px 20px;
+  margin-left: -32px;
+  margin-right: -32px;
+  margin-bottom: -32px;
+  position: relative;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -4px 20px rgba(59, 130, 246, 0.1);
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+  opacity: 0.8;
+}
+
+.footer::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+}
+
+/* =========================================
+   Utility Classes
+   ========================================= */
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+.text-center { text-align: center; }
+.text-success { color: var(--success); }
+.text-error { color: var(--error); }
+
+/* =========================================
+   Responsive Design
+   ========================================= */
+@media (max-width: 640px) {
+  .container {
+    margin: 10px auto;
+    padding: 20px;
+    width: 95%;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .steps {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .requirements-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   Loading Animation
+   ========================================= */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.loading-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loading-content {
+  text-align: center;
+  color: white;
+  max-width: 400px;
+  padding: 32px;
+}
+
+.loading-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+.loading-message {
+  font-size: 1rem;
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.5s ease;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, 
+    var(--primary) 0%, 
+    var(--accent) 50%, 
+    var(--primary) 100%);
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.loading-steps {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.loading-step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.loading-step.active {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.loading-step.completed {
+  opacity: 0.8;
+  color: var(--success);
+}
+
+.loading-step .step-icon {
+  margin-right: 12px;
+  width: 16px;
+  text-align: center;
+}

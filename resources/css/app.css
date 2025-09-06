@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* optional helpers */
+.card { @apply bg-white/5 dark:bg-white/5 rounded-xl overflow-hidden shadow-card border border-white/10; }
+.hdr  { @apply text-2xl font-bold tracking-tight; }
+.sub  { @apply text-sm text-gray-400; }
+.link { @apply text-brand hover:underline hover:text-brand/80 transition; }
+.btn  { @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium
+         bg-brand text-white border border-brand shadow-card
+         hover:bg-brand/80 hover:shadow-lg transition; }
+.badge { @apply inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-brand/10 text-brand; }
+.section-title { @apply text-2xl font-bold mb-4 border-b border-white/10 pb-2; }
+
+.editor-content h2 { @apply text-3xl font-bold mt-8 mb-4; }
+.editor-content h3 { @apply text-2xl font-semibold mt-6 mb-3; }
+.editor-content h4 { @apply text-xl font-semibold mt-4 mb-2; }
+.editor-content h5 { @apply text-lg font-semibold mt-3 mb-2; }
+.editor-content ul { @apply list-disc pl-6; }
+.editor-content ol { @apply list-decimal pl-6; }
+.editor-content li { @apply list-inside pl-1; }
+.editor-content a { @apply text-brand underline hover:text-brand/80 dark:text-brand dark:hover:text-brand/80; }
+
+/* modal styles */
+.modal-overlay { @apply fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center; }
+.modal { @apply bg-gray-800 text-gray-100 rounded-lg p-6 w-80 space-y-4; }
+.modal label { @apply block text-sm space-y-1; }
+.modal input, .modal select { @apply w-full border border-gray-600 bg-gray-700 text-gray-100 placeholder-gray-400 rounded px-2 py-1; }
+.modal .actions { @apply flex justify-end gap-2 pt-2; }
+.btn-primary { @apply bg-brand text-white px-3 py-1 rounded hover:bg-brand/90 focus:outline-none focus:ring-2 focus:ring-brand; }
+.btn-secondary { @apply border border-gray-600 bg-gray-700 text-gray-100 px-3 py-1 rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-brand; }
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  40% { transform: rotate(14deg); }
+  50% { transform: rotate(-4deg); }
+  60% { transform: rotate(10deg); }
+  70% { transform: rotate(0deg); }
+}
+
+.animate-wave {
+  display: inline-block;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%; /* pivot point of hand */
+}
