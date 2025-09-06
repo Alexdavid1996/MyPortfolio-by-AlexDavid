@@ -33,12 +33,30 @@
 }
 
 /* Lists — center the block, keep items left-aligned */
-.content-body ul,
-.content-body ol {
+.content-body > ul,
+.content-body > ol {
   display: inline-block;
   text-align: left !important;       /* override parent centering */
   margin: 0.75rem auto;
   padding-left: 1.5rem;              /* indent */
+}
+
+/* Nested lists */
+.content-body li ul,
+.content-body li ol {
+  display: block;
+  margin: 0.25rem 0;
+  padding-left: 1.5rem;              /* indent nested lists */
+}
+
+/* Nested bulleted lists */
+.content-body li ul {
+  list-style-type: circle;
+}
+
+/* Nested numbered lists */
+.content-body li ol {
+  list-style-type: lower-alpha;
 }
 
 /* Bulleted lists */
